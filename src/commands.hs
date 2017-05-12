@@ -12,11 +12,11 @@ cmdMap =
 
 stopAll :: [String] -> IO ()
 stopAll args = do
-    listContainers >>= allAction stopContainer
+    listContainers >>= mapM_ (stopContainer args)
     putStrLn "Containers successfully stopped"
 
 
 rmAll :: [String] -> IO ()
 rmAll args = do
-    listContainers >>= allAction removeContainer
-    putStrLn "Containers successfully removed"
+    listContainers >>= mapM_ (removeContainer args)
+    putStrLn "Containers successfully stopped"

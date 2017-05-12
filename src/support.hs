@@ -6,11 +6,6 @@ import System.IO
 import System.Process
 
 
-allAction :: (String -> IO()) -> [String] -> IO()
-allAction action [] = return ()
-allAction action (pid:pids) = action pid >> allAction action pids
-
-
 executeCommand :: String -> IO String
 executeCommand cmd = do
     putStrLn $ "Executando comando: " ++ cmd
